@@ -1,0 +1,278 @@
+:root {
+  --azul-oscuro: #0b1f3a;
+  --azul: #14356b;
+  --azul-claro: #2e6fdb;
+  --acento: #ffb703;
+  --gris-claro: #f4f6f9;
+  --gris-texto: #444;
+  --blanco: #ffffff;
+  --rojo: #d64545;
+  --verde: #2e8b57;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--gris-claro);
+  color: var(--gris-texto);
+  line-height: 1.6;
+}
+
+header {
+  background: var(--azul-oscuro);
+  color: var(--blanco);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.logo span {
+  color: var(--acento);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.4rem 0.2rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+nav a:hover,
+nav a.active {
+  border-color: var(--acento);
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--azul-oscuro), var(--azul));
+  color: var(--blanco);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  max-width: 640px;
+  margin: 0 auto 1.5rem;
+  color: #dfe7f5;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--acento);
+  color: var(--azul-oscuro);
+  padding: 0.8rem 1.6rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+.btn.secundario {
+  background: transparent;
+  color: var(--blanco);
+  border: 2px solid var(--blanco);
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.tarjeta {
+  background: var(--blanco);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  border-top: 4px solid var(--azul-claro);
+}
+
+.tarjeta h3 {
+  margin-top: 0;
+  color: var(--azul-oscuro);
+}
+
+.tarjeta.alerta {
+  border-top-color: var(--rojo);
+}
+
+.tarjeta.ok {
+  border-top-color: var(--verde);
+}
+
+section h2 {
+  color: var(--azul-oscuro);
+  border-bottom: 3px solid var(--acento);
+  display: inline-block;
+  padding-bottom: 0.3rem;
+  margin-bottom: 1.2rem;
+}
+
+.formulario {
+  background: var(--blanco);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.campo {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.campo label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--azul-oscuro);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.campo textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.campo small {
+  color: #888;
+  margin-top: 0.3rem;
+}
+
+.error {
+  color: var(--rojo);
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  display: none;
+}
+
+.campo.invalido input,
+.campo.invalido select,
+.campo.invalido textarea {
+  border-color: var(--rojo);
+}
+
+.campo.invalido .error {
+  display: block;
+}
+
+#confirmacion {
+  display: none;
+  background: #eafaf0;
+  border: 1px solid var(--verde);
+  color: #1f5f3f;
+  padding: 1.2rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.lista-denuncias {
+  margin-top: 2.5rem;
+}
+
+.denuncia-item {
+  background: var(--blanco);
+  border-left: 4px solid var(--azul-claro);
+  padding: 1rem 1.2rem;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+}
+
+.denuncia-item .meta {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--azul-claro);
+  color: var(--blanco);
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  margin-right: 0.4rem;
+}
+
+footer {
+  background: var(--azul-oscuro);
+  color: #cdd8ea;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+.emergencia {
+  background: #fff4e5;
+  border: 1px solid var(--acento);
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.emergencia strong {
+  color: var(--rojo);
+}
+
+@media (max-width: 640px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+}
