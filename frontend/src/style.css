@@ -4,10 +4,11 @@
   --azul-claro: #2e6fdb;
   --acento: #ffb703;
   --gris-claro: #f4f6f9;
-  --gris-texto: #444;
+  --gris-texto: #3a3f47;
   --blanco: #ffffff;
   --rojo: #d64545;
   --verde: #2e8b57;
+  --sombra: 0 2px 12px rgba(11, 31, 58, 0.08);
 }
 
 * {
@@ -22,7 +23,17 @@ body {
   line-height: 1.6;
 }
 
-header {
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--azul-claro);
+}
+
+header.app-header {
   background: var(--azul-oscuro);
   color: var(--blanco);
   padding: 1rem 2rem;
@@ -30,6 +41,9 @@ header {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .logo {
@@ -44,7 +58,7 @@ header {
   color: var(--acento);
 }
 
-nav ul {
+nav.main-nav ul {
   list-style: none;
   display: flex;
   gap: 1.5rem;
@@ -53,7 +67,7 @@ nav ul {
   flex-wrap: wrap;
 }
 
-nav a {
+nav.main-nav a {
   color: var(--blanco);
   text-decoration: none;
   font-weight: 500;
@@ -62,9 +76,17 @@ nav a {
   transition: border-color 0.2s ease;
 }
 
-nav a:hover,
-nav a.active {
+nav.main-nav a:hover,
+nav.main-nav a.router-link-exact-active {
   border-color: var(--acento);
+}
+
+main {
+  flex: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  width: 100%;
 }
 
 .hero {
@@ -97,6 +119,7 @@ nav a.active {
   border: none;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+  font-size: 1rem;
 }
 
 .btn:hover {
@@ -104,16 +127,17 @@ nav a.active {
   box-shadow: 0 6px 14px rgba(0,0,0,0.2);
 }
 
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 .btn.secundario {
   background: transparent;
   color: var(--blanco);
   border: 2px solid var(--blanco);
-}
-
-main {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2.5rem 1.5rem;
 }
 
 .tarjetas {
@@ -127,7 +151,7 @@ main {
   background: var(--blanco);
   border-radius: 10px;
   padding: 1.5rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  box-shadow: var(--sombra);
   border-top: 4px solid var(--azul-claro);
 }
 
@@ -136,13 +160,8 @@ main {
   color: var(--azul-oscuro);
 }
 
-.tarjeta.alerta {
-  border-top-color: var(--rojo);
-}
-
-.tarjeta.ok {
-  border-top-color: var(--verde);
-}
+.tarjeta.alerta { border-top-color: var(--rojo); }
+.tarjeta.ok { border-top-color: var(--verde); }
 
 section h2 {
   color: var(--azul-oscuro);
@@ -156,7 +175,7 @@ section h2 {
   background: var(--blanco);
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  box-shadow: var(--sombra);
   max-width: 640px;
   margin: 0 auto;
 }
@@ -197,7 +216,6 @@ section h2 {
   color: var(--rojo);
   font-size: 0.85rem;
   margin-top: 0.3rem;
-  display: none;
 }
 
 .campo.invalido input,
@@ -206,18 +224,22 @@ section h2 {
   border-color: var(--rojo);
 }
 
-.campo.invalido .error {
-  display: block;
-}
-
-#confirmacion {
-  display: none;
-  background: #eafaf0;
-  border: 1px solid var(--verde);
-  color: #1f5f3f;
+.alerta-caja {
   padding: 1.2rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
+}
+
+.alerta-caja.exito {
+  background: #eafaf0;
+  border: 1px solid var(--verde);
+  color: #1f5f3f;
+}
+
+.alerta-caja.error {
+  background: #fdecec;
+  border: 1px solid var(--rojo);
+  color: #8a2323;
 }
 
 .lista-denuncias {
@@ -248,12 +270,15 @@ section h2 {
   margin-right: 0.4rem;
 }
 
-footer {
+.badge.estado {
+  background: var(--verde);
+}
+
+footer.app-footer {
   background: var(--azul-oscuro);
   color: #cdd8ea;
   text-align: center;
   padding: 1.5rem;
-  margin-top: 3rem;
   font-size: 0.9rem;
 }
 
@@ -269,8 +294,22 @@ footer {
   color: var(--rojo);
 }
 
+.spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid rgba(11,31,58,0.3);
+  border-top-color: var(--azul-oscuro);
+  border-radius: 50%;
+  animation: girar 0.7s linear infinite;
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
 @media (max-width: 640px) {
-  header {
+  header.app-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.8rem;
