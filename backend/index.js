@@ -5,7 +5,20 @@ const db = require('./db');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors());
+const ORIGENES_PERMITIDOS = [
+  'https://frankugb.github.io',
+  'http://localhost:5173',
+  'http://localhost:5504'
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || ORIGENES_PERMITIDOS.includes(origin)) {
+      return callback(null, true);
+    }
+    callback(new Error('Origen no permitido por CORS'));
+  }
+}));
 app.use(express.json());
 
 const TIPOS_VALIDOS = ['Phishing', 'Suplantacion', 'Fraude', 'Acoso', 'Malware', 'Otro'];
