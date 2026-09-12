@@ -369,6 +369,29 @@ footer.app-footer {
   color: var(--color-destructive);
 }
 
+.contacto-tarjeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.contacto-numero {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: var(--space-sm);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.contacto-tarjeta.alerta .contacto-numero {
+  color: var(--color-destructive);
+}
+
+.contacto-numero:hover {
+  text-decoration: underline;
+}
+
 .spinner {
   display: inline-block;
   width: 1em;

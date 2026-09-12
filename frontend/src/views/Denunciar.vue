@@ -75,7 +75,7 @@ onMounted(cargarDenuncias);
       <h2>Denunciar un delito informático</h2>
 
       <div class="emergencia">
-        <strong>¿Estás en riesgo inmediato?</strong> Si tu seguridad física está en peligro, contactá primero a la policía o a la línea de emergencias de tu país.
+        <strong>¿Estás en riesgo inmediato?</strong> Si tu seguridad física está en peligro, contactá primero a la Policía Nacional Civil al <a href="tel:911">911</a> o visitá nuestra <router-link to="/contacto">página de Contactos</router-link>.
       </div>
 
       <div v-if="referenciaConfirmada" class="alerta-caja exito">

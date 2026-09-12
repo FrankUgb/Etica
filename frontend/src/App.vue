@@ -13,9 +13,11 @@
     <nav class="main-nav">
       <ul>
         <li><router-link to="/">Inicio</router-link></li>
+        <li><router-link to="/acerca">Acerca del proyecto</router-link></li>
         <li><router-link to="/denunciar">Denunciar</router-link></li>
         <li><router-link to="/seguridad">Medidas de Seguridad</router-link></li>
         <li><router-link to="/proteccion-datos">Protección de Datos</router-link></li>
+        <li><router-link to="/contacto">Contacto</router-link></li>
       </ul>
     </nav>
   </header>
